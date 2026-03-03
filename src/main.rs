@@ -1,6 +1,10 @@
-use rivals_scraper::Scraper;
+use dotenvy::dotenv;
+use rivals_scraper::Db;
 
 #[tokio::main]
 async fn main() {
-    let scraper = Scraper::new("https://marvelrivals.fandom.com/wiki", 2000);
+    dotenv().ok();
+
+    let db = Db::new().await.expect("Failed to connect to database.");
+    println!("Connected to Database!");
 }
