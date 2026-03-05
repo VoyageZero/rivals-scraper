@@ -10,6 +10,9 @@ pub struct HeroLink {
 impl Scraper {
     pub fn scrape_hero_links(&self, html: &str) -> Vec<HeroLink> {
         let doc = Html::parse_document(html);
-        let tbl_sel = Selector::parse("table.fandom-table").unwrap();
+        let row_sel = Selector::parse("tbody tr").unwrap();
+        let num_sel = Selector::parse("td > i > b").unwrap();
+        let link_sel = Selector::parse("td > b > a").unwrap();
+        let id_sel = Selector::parse("td > span > b").unwrap();
     }
 }
